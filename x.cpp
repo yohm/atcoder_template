@@ -17,13 +17,12 @@ typedef unsigned long long ULL;
 #define eprintf(...) 42
 #endif
 
+#define REP(i,n) for(LL i=0, i##_len=(n); i<i##_len; ++i)
+
 LL gcd(LL a, LL b) {
   if( b == 0 ) { return a; }
   return gcd(b, a % b);
 }
-
-template<class T>bool chmax(T &a, const T &b) { if (a<b) { a=b; return 1; } return 0; }
-template<class T>bool chmin(T &a, const T &b) { if (b<a) { a=b; return 1; } return 0; }
 
 template <LL MOD=1000000007> class MODLL {
 public:
@@ -62,7 +61,6 @@ public:
 };
 
 typedef MODLL<> ML;
-
 
 void test() {
   {
