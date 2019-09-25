@@ -1,18 +1,21 @@
 #!/bin/bash -eu
 
-read -p "Filename: " F
+set -x
 
-if [ -f $F.cpp ]; then
-  echo "$F.cpp already exists."
+if [ $# -eq 0 ]; then
+  echo "no argument is given"
   exit
 fi
 
-read -p "$F.cpp is being created. ok? (y/N): " yn
-if [[ $yn = [yY] ]]; then
+for F in $@
+do
+  if [ -f $F.cpp ]; then
+  echo "$F.cpp already exists."
+    exit
+  fi
   set -x
   cp x.cpp $F.cpp
   echo "add_executable($F $F.cpp)" >> CMakeLists.txt
-else
-  echo abort
-fi
+  set +x
+done
 
