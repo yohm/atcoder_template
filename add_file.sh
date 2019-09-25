@@ -1,7 +1,5 @@
 #!/bin/bash -eu
 
-set -x
-
 if [ $# -eq 0 ]; then
   echo "no argument is given"
   exit
